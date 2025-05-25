@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juega a Videojuegos con Luiggy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-bg: linear-gradient(120deg, #232526 0%, #414345 100%);
+      --accent: #FFD700;
+      --primary: #00bfff;
+      --primary-dark: #009acd;
+      --text: #fff;
+      --card-bg: rgba(30,34,45,0.95);
+      --radius: 16px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.2);
+    }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--main-bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    header {
+      background: rgba(20, 20, 30, 0.95);
+      box-shadow: var(--shadow);
+      padding: 32px 0 16px 0;
+      text-align: center;
+      border-bottom: 2px solid var(--accent);
+    }
+    header h1 {
+      margin: 0 0 10px 0;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      color: var(--accent);
+    }
+    nav {
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      transition: background 0.2s, color 0.2s;
+    }
+    nav a:hover, nav a:focus {
+      background: var(--primary);
+      color: #232526;
+    }
+    main {
+      max-width: 1100px;
+      margin: 32px auto;
+      padding: 0 16px;
+    }
+    section {
+      margin-bottom: 40px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px 24px;
+    }
+    h2 {
+      color: var(--accent);
+      margin-top: 0;
+      font-size: 2rem;
+      border-left: 6px solid var(--primary);
+      padding-left: 12px;
+      margin-bottom: 18px;
+    }
+    .social-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .social-buttons a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #232526;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    .social-buttons a:hover {
+      background: var(--primary-dark);
+      color: #fff;
+    }
+    .login-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .login-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: var(--radius);
+      padding: 10px 20px;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      transition: background 0.2s, color 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .login-btn.google {
+      background: #fff;
+      color: #232526;
+    }
+    .login-btn.google:hover {
+      background: #e5e5e5;
+    }
+    .login-btn.facebook {
+      background: #1877f3;
+      color: #fff;
+    }
+    .login-btn.facebook:hover {
+      background: #145db2;
+    }
+    .login-btn.apple {
+      background: #000;
+      color: #fff;
+    }
+    .login-btn.apple:hover {
+      background: #222;
+    }
+    .blog-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 24px;
+    }
+    article {
+      background: rgba(40,44,60,0.98);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 220px;
+    }
+    article img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    }
+    ul.social-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 0;
+    }
+    ul.social-list li a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    ul.social-list li a:hover {
+      color: var(--accent);
+    }
+    footer {
+      background: rgba(20, 20, 30, 0.95);
+      color: #fff;
+      text-align: center;
+      padding: 18px 0;
+      border-top: 2px solid var(--accent);
+      margin-top: 40px;
+      font-size: 1rem;
+    }
+    @media (max-width: 700px) {
+      header h1 { font-size: 1.5rem; }
+      h2 { font-size: 1.3rem; }
+      main { padding: 0 4px; }
+      section { padding: 18px 6px; }
+    }
+    .video-iframe {
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Juega a Videojuegos con Luiggy</h1>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#youtube">YouTube</a>
+      <a href="#blog">Blog</a>
+      <a href="#tienda">Tienda</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+  <main>
+    <section id="inicio">
+      <h2>Bienvenido a mi web oficial</h2>
+      <p>¡Explora mis videos, artículos del blog y tienda exclusiva!</p>
+      
+      <form id="registro-form" style="max-width:400px;margin-bottom:24px;background:rgba(40,44,60,0.98);padding:20px 18px;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.10);">
+        <h3 style="margin-top:0;">Crear cuenta</h3>
+        <label for="email" style="display:block;margin-bottom:6px;">Correo electrónico *</label>
+        <input type="email" id="email" name="email" required style="width:100%;padding:8px;border-radius:8px;border:1px solid #ccc;margin-bottom:12px;">
+        
+        <label for="password" style="display:block;margin-bottom:6px;">Contraseña *</label>
+        <input type="password" id="password" name="password" required minlength="6" style="width:100%;padding:8px;border-radius:8px;border:1px solid #ccc;margin-bottom:12px;">
+        
+        <label for="telefono" style="display:block;margin-bottom:6px;">Número de teléfono *</label>
+        <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{9,15}" style="width:100%;padding:8px;border-radius:8px;border:1px solid #ccc;margin-bottom:12px;">
+        
+        <label style="display:flex;align-items:center;margin-bottom:12px;">
+          <input type="checkbox" id="terminos" required style="margin-right:8px;">
+          Acepto los <a href="#" style="color:var(--primary);text-decoration:underline;margin-left:4px;" target="_blank">términos y condiciones</a> *
+        </label>
+        
+        <button type="submit" style="width:100%;background:var(--primary);color:#232526;font-weight:bold;padding:10px 0;border:none;border-radius:8px;cursor:pointer;font-size:1rem;">Registrarse</button>
+      </form>
+      <script>
+        document.getElementById('registro-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+          alert('¡Registro exitoso! Bienvenido/a a la comunidad.');
+          // Aquí puedes agregar lógica para enviar los datos al servidor
+        });
+      </script>
+
+      <div class="user-account" style="display:flex;align-items:center;gap:18px;margin-bottom:18px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Usuario" width="70" height="70" style="border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.10);">
+        <div>
+          <h3 style="margin:0 0 8px 0;">¡Hola, Usuario!</h3>
+          <ul style="margin:0;padding-left:18px;">
+            <li>Registrado desde: <span id="fecha-registro">12 de mayo de 2023</span></li>
+            <li><a href="#blog" style="color:var(--primary);text-decoration:underline;">Ver mis posts favoritos</a></li>
+            <li><a href="#tienda" style="color:var(--primary);text-decoration:underline;">Acceder a la tienda</a></li>
+            <li><a href="#contacto" style="color:var(--primary);text-decoration:underline;">Editar perfil</a></li>
+            <li><a href="#" onclick="cerrarSesion();return false;" style="color:var(--accent);text-decoration:underline;">Cerrar sesión</a></li>
+          </ul>
+        </div>
+      </div>
+      <script>
+        // Simulación de función de cerrar sesión
+        function cerrarSesion() {
+          alert('Sesión cerrada. ¡Hasta pronto!');
+          // Aquí podrías redirigir o limpiar datos de usuario
+        }
+      </script>
+      <div class="social-buttons">
+        <a href="https://www.youtube.com/@Juegavideojuegosconluiggy" target="_blank">🎬 YouTube</a>
+        <a href="https://www.instagram.com/juega_a_videojuegos_con_luiggy/" target="_blank">📸 Instagram</a>
+        <a href="https://www.twitch.tv/juegaavideojuegosconluigi" target="_blank">🎮 Twitch</a>
+        <a href="https://discord.com/invite/K34e5rnutS" target="_blank">💬 Discord</a>
+        <a href="https://www.threads.net/@juega_a_videojuegos_con_luiggy" target="_blank">🧵 Threads</a>
+        <a href="https://www.tiktok.com/@juega_a_videojuegos" target="_blank">🎵 TikTok</a>
+        <a href="https://www.reddit.com/r/JuegaConLuiggy/" target="_blank">👾 Reddit</a>
+      </div>
+    </section>
+
+ 
+    </section>
+
+    <section id="blog">
+      <h2>Últimos posts del blog</h2>
+      <div class="blog-list">
+        <article>
+          <h3>📅 Próximos Videos o Directos</h3>
+          <p><strong>Fecha:</strong> 20 de mayo de 2025</p>
+          <p>Bienvenidos a este blog y en este primer artículo os digo las fechas de todos los videos y directos ya planeados que quiero hacer y que ya están programados en YouTube.</p>
+          <img src="ruta-a-tu-imagen.jpg" alt="Miniatura blog">
+        </article>
+        <article>
+          <h3>🔄 Últimas Actualizaciones en la Página</h3>
+          <p><strong>Fecha:</strong> 25 de abril de 2025</p>
+          <p>En este nuevo artículo os voy a poner todo lo nuevo en la página.</p>
+        </article>
+        <article>
+          <h3>👋 Bienvenidos al Canal</h3>
+          <p><strong>Fecha:</strong> 22 de abril de 2025</p>
+          <p><em>📍 Primera entrada del blog</em><br>
+          Hola a todos los gamers, curiosos y nuevos visitantes 👋<br>
+          ¡Bienvenidos al blog oficial de <strong>Juega a Videojuegos con Luiggy</strong>! Si ya formas parte de nuestra comunidad en YouTube, sabes que este es un espacio donde la diversión y los videojuegos van de la mano...</p>
+        </article>
+        <article>
+          <h3>¿Qué es la PlayStation?</h3>
+          <p>La PlayStation es una consola de videojuegos creada por Sony, muy popular por sus juegos exclusivos y potencia gráfica.</p>
+        </article>
+        <article>
+          <h3>El impacto de los videojuegos en el aprendizaje</h3>
+          <p>Los videojuegos pueden ayudar en la coordinación, memoria y resolución de problemas. ¡Jugar también puede educar!</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="tienda">
+      <h2>Tienda oficial</h2>
+      <p>Pronto podrás comprar artículos oficiales como camisetas, gorras y más.</p>
+    </section>
+
+    <section id="contacto">
+      <h2>Redes sociales y contacto</h2>
+      <ul class="social-list">
+        <li><a href="https://www.youtube.com/@Juegavideojuegosconluiggy" target="_blank">YouTube</a></li>
+        <li><a href="https://www.instagram.com/juega_a_videojuegos_con_luiggy/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.twitch.tv/juegaavideojuegosconluigi" target="_blank">Twitch</a></li>
+        <li><a href="https://discord.com/invite/K34e5rnutS" target="_blank">Discord</a></li>
+        <li><a href="https://www.threads.net/@juega_a_videojuegos_con_luiggy" target="_blank">Threads</a></li>
+        <li><a href="https://www.tiktok.com/@juega_a_videojuegos" target="_blank">TikTok</a></li>
+        <li><a href="https://www.reddit.com/r/JuegaConLuiggy/" target="_blank">Reddit</a></li>
+      </ul>
+      <p style="margin-top:18px;">¿Tienes dudas o propuestas? Escríbeme a <a href="mailto:contacto juegaavideojuegosconluiggy@gmail.com" style="color:var(--primary);">contacto@luiggy8.com</a></p>
+    </section>
+
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Juega a Videojuegos con Luiggy8. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
+
+
+
+
+
+
+
